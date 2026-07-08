@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>宇宙桌宠 · 设置</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font: 13px/1.5 "Segoe UI", "Microsoft YaHei", sans-serif;
+      color: #e8ecf8;
+      background: linear-gradient(160deg, #12141c 0%, #0a0b10 100%);
+      min-height: 100vh;
+      user-select: none;
+    }
+
+    .wrap {
+      padding: 20px 22px 18px;
+    }
+
+    h1 {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      color: rgba(200, 210, 255, 0.45);
+      margin-bottom: 18px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 12px;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .row:last-of-type { border-bottom: none; }
+
+    .label {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .desc {
+      grid-column: 1 / -1;
+      font-size: 11px;
+      color: rgba(200, 210, 255, 0.38);
+      margin-top: -4px;
+    }
+
+    .control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-self: end;
+    }
+
+    input[type="range"] {
+      width: 140px;
+      accent-color: #f0b84a;
+      cursor: pointer;
+    }
+
+    input[type="color"] {
+      width: 42px;
+      height: 28px;
+      padding: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+    }
+
+    .value {
+      min-width: 42px;
+      text-align: right;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+      color: rgba(240, 184, 74, 0.95);
+    }
+
+    .reset-btn {
+      padding: 4px 10px;
+      font: inherit;
+      font-size: 11px;
+      color: rgba(200, 210, 255, 0.75);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .reset-btn:hover {
+      background: rgba(240, 184, 74, 0.14);
+      color: #f0b84a;
+    }
+
+    .footer {
+      margin-top: 16px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .close-btn {
+      padding: 7px 18px;
+      font: inherit;
+      font-size: 12px;
+      color: #12141c;
+      background: linear-gradient(135deg, #f0b84a, #e8922a);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .close-btn:hover { filter: brightness(1.06); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>宇宙桌宠 · 设置</h1>
+    <p class="subtitle">调整黑洞外观，每项可单独恢复默认</p>
+
+    <div class="row">
+      <div class="label">黑洞大小</div>
+      <div class="control">
+        <input type="range" id="sizeSlider" min="0.06" max="0.22" step="0.005" />
+        <span class="value" id="sizeValue">0.11</span>
+        <button type="button" class="reset-btn" data-reset="blackHoleSize">恢复默认</button>
+      </div>
+      <div class="desc">施瓦西半径，影响本影与吸积盘整体尺度</div>
+    </div>
+
+    <div class="row">
+      <div class="label">吸积盘颜色</div>
+      <div class="control">
+        <input type="color" id="diskColor" />
+        <button type="button" class="reset-btn" data-reset="diskColor">恢复默认</button>
+      </div>
+      <div class="desc">主色调，会自动生成盘面亮部与暗部配色</div>
+    </div>
+
+    <div class="footer">
+      <button type="button" class="close-btn" id="closeBtn">完成</button>
+    </div>
+  </div>
+  <script src="settings-renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{
+  "name": "cosmic-desktop-pet",
+  "version": "1.0.0",
+  "description": "物理光学风格黑洞/星系桌宠",
+  "main": "main.js",
+  "author": "cosmic-desktop-pet",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "build:dir": "electron-builder --win dir"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.cosmic.desktop-pet",
+    "productName": "宇宙桌宠",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "index.html",
+      "settings.html",
+      "settings-preload.js",
+      "settings-renderer.js",
+      "settings-defaults.js",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "宇宙桌宠"
+    }
+  }
+}
